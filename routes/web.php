@@ -136,21 +136,48 @@ Route::get('/result', function () {
     // $articles = Article::all();
     // return $articles->keyBy('title');
 
-    $collection = collect([
-        1, 2, 3, 4, '', 0, 'Volodymyr', null, false, []
+    // $collection = collect([
+    //     1, 2, 3, 4, '', 0, 'Volodymyr', null, false, []
+    // ]);
+
+    // $collection->push(6, 7, 8, 'laravel', [1, 2, 3]);
+
+    // $collection->put('name', 'John Doe');
+
+    // $collection->forget('name');
+
+    // $removed = $collection->pop();
+
+    // $shifted = $collection->shift();
+
+    // return $shifted;
+
+    //%concat
+    // $collection1 = collect([
+    //     'Barcelona', 'London'
+    // ]);
+
+    // $collection2 = collect([
+    //     'Amsteram', 'Berlin'
+    // ]);
+
+    // $combined = $collection1->concat($collection2);
+
+    // return $combined;
+
+    //%zip
+     $capitals = collect([
+        'Barcelona', 'London', 'Kyiv'
     ]);
 
-    $collection->push(6, 7, 8, 'laravel', [1, 2, 3]);
+    $countries = collect([
+        'Spain', 'United Kindom', 'Ukraine'
+    ]);
 
-    $collection->put('name', 'John Doe');
+    $ziped = $capitals->zip($countries);
 
-    $collection->forget('name');
+    return $ziped;
 
-    $removed = $collection->pop();
-
-    $shifted = $collection->shift();
-
-    return $shifted;
 });
 
 
