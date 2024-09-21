@@ -14,12 +14,12 @@ Route::get('/articles', [ArticleController::class, 'index']);
 
 Route::get('/result', function () {
 
-    $collection = collect([
-        ['name' => 'Alex', 'age' => 27],
-        ['name' => 'Dary', 'age' => 27],
-        ['name' => 'John', 'age' => 43],
-        ['name' => 'Mike', 'age' => 22],
-    ]);
+    // $collection = collect([
+    //     ['name' => 'Alex', 'age' => 27],
+    //     ['name' => 'Dary', 'age' => 27],
+    //     ['name' => 'John', 'age' => 43],
+    //     ['name' => 'Mike', 'age' => 22],
+    // ]);
 
     // return $collection->where('age', '>', 22);
 
@@ -46,13 +46,32 @@ Route::get('/result', function () {
     // return Article::whereDay('created_at', 18)->get();
     // return Article::whereMonth('created_at', 8)->get();
     // return Article::whereYear('created_at', 2022)->get();
-    return Article::whereTime('created_at', '>=', '09:00:00')
-        ->whereTime('created_at', '<=', '17:00:00')
-        ->count();
+    // return Article::whereTime('created_at', '>=', '09:00:00')
+    //     ->whereTime('created_at', '<=', '17:00:00')
+    //     ->count();
 
 
+    $collection = collect([
+        1, 2, 3, 4, '', 0, null, false, []
+    ]);
 
+    // return $collection->filter(function ($value, $key) {
+    //     return $value > 2 && $key < 7;
+    // });
 
+    // return $collection->reject(function ($value, $key) {
+    //     return empty($value);
+    // });
+
+    // $articles = Article::where('is_published', true)->get();
+    // return $articles->filter(function ($article) {
+    //     return $article->min_to_read > 8;
+    // });
+
+    $articles = Article::all();
+    return $articles->reject(function ($article) {
+        return empty($article->excerpt);
+    });
 });
 
 
