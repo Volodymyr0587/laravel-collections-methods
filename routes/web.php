@@ -51,9 +51,9 @@ Route::get('/result', function () {
     //     ->count();
 
 
-    $collection = collect([
-        1, 2, 3, 4, '', 0, null, false, []
-    ]);
+    // $collection = collect([
+    //     1, 2, 3, 4, '', 0, 'Volodymyr', null, false, []
+    // ]);
 
     // return $collection->filter(function ($value, $key) {
     //     return $value > 2 && $key < 7;
@@ -68,10 +68,21 @@ Route::get('/result', function () {
     //     return $article->min_to_read > 8;
     // });
 
-    $articles = Article::all();
-    return $articles->reject(function ($article) {
-        return empty($article->excerpt);
-    });
+    // $articles = Article::all();
+    // return $articles->reject(function ($article) {
+    //     return empty($article->excerpt);
+    // });
+
+    // return $collection->contains(3);
+
+    $collection = collect([
+        'name' => 'Kevin de Bruyne',
+        'age' => 31,
+        'club' => 'Manchester City',
+    ]);
+
+    // return $collection->except('age', 'club');
+    return $collection->only('name');
 });
 
 
