@@ -166,17 +166,54 @@ Route::get('/result', function () {
     // return $combined;
 
     //%zip
-     $capitals = collect([
-        'Barcelona', 'London', 'Kyiv'
+    //  $capitals = collect([
+    //     'Barcelona', 'London', 'Kyiv'
+    // ]);
+
+    // $countries = collect([
+    //     'Spain', 'United Kindom', 'Ukraine'
+    // ]);
+
+    // $ziped = $capitals->zip($countries);
+
+    // return $ziped;
+
+    // $orders = collect([
+    //     [
+    //         'id' => 1,
+    //         'items' => [
+    //             ['name' => 'Widget', 'price' => 10],
+    //             ['name' => 'Gizmo', 'price' => 5]
+    //         ]
+    //     ],
+    //     [
+    //         'id' => 2,
+    //         'items' => [
+    //             ['name' => 'Thing', 'price' => 15],
+    //             ['name' => 'Doodad', 'price' => 20]
+    //         ]
+    //     ],
+    // ]);
+
+    // //% collapse()
+    // $items = $orders->pluck('items')->collapse();
+
+    //% split()
+    $posts = collect([
+        ['title' => 'Post 1', 'body' => 'test'],
+        ['title' => 'Post 2', 'body' => 'test'],
+        ['title' => 'Post 3', 'body' => 'test'],
+        ['title' => 'Post 4', 'body' => 'test'],
+        ['title' => 'Post 5', 'body' => 'test'],
+        ['title' => 'Post 6', 'body' => 'test'],
+        ['title' => 'Post 7', 'body' => 'test'],
+        ['title' => 'Post 8', 'body' => 'test'],
+        ['title' => 'Post 9', 'body' => 'test'],
+        ['title' => 'Post 10', 'body' => 'test'],
     ]);
 
-    $countries = collect([
-        'Spain', 'United Kindom', 'Ukraine'
-    ]);
-
-    $ziped = $capitals->zip($countries);
-
-    return $ziped;
+    $chunks = $posts->split(5);
+    return $chunks;
 
 });
 
