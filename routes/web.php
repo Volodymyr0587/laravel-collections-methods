@@ -199,21 +199,34 @@ Route::get('/result', function () {
     // $items = $orders->pluck('items')->collapse();
 
     //% split()
-    $posts = collect([
-        ['title' => 'Post 1', 'body' => 'test'],
-        ['title' => 'Post 2', 'body' => 'test'],
-        ['title' => 'Post 3', 'body' => 'test'],
-        ['title' => 'Post 4', 'body' => 'test'],
-        ['title' => 'Post 5', 'body' => 'test'],
-        ['title' => 'Post 6', 'body' => 'test'],
-        ['title' => 'Post 7', 'body' => 'test'],
-        ['title' => 'Post 8', 'body' => 'test'],
-        ['title' => 'Post 9', 'body' => 'test'],
-        ['title' => 'Post 10', 'body' => 'test'],
+    // $posts = collect([
+    //     ['title' => 'Post 1', 'body' => 'test'],
+    //     ['title' => 'Post 2', 'body' => 'test'],
+    //     ['title' => 'Post 3', 'body' => 'test'],
+    //     ['title' => 'Post 4', 'body' => 'test'],
+    //     ['title' => 'Post 5', 'body' => 'test'],
+    //     ['title' => 'Post 6', 'body' => 'test'],
+    //     ['title' => 'Post 7', 'body' => 'test'],
+    //     ['title' => 'Post 8', 'body' => 'test'],
+    //     ['title' => 'Post 9', 'body' => 'test'],
+    //     ['title' => 'Post 10', 'body' => 'test'],
+    // ]);
+
+    // $chunks = $posts->split(5);
+    // return $chunks;
+
+    //% sort and sortDesc
+    $collection = collect([
+        3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5
     ]);
 
-    $chunks = $posts->split(5);
-    return $chunks;
+    //%sort
+    // $sorted = $collection->sort();
+    // return $sorted->values()->all();
+
+    $sortedByDesc = $collection->sortDesc();
+    return $sortedByDesc->values()->all();
+
 
 });
 
