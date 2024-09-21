@@ -119,16 +119,22 @@ Route::get('/result', function () {
     //     });
     // return $articles;
 
-    return Article::with('user')->get()->mapWithKeys(function ($article) {
-        return [
-            $article->id => [
-                'title' => $article->title,
-                'created_at' => $article->created_at->format('m/d/Y'),
-                'user_name' => $article->user->name,
-                'user_email' => $article->user->email
-            ]
-        ];
-    });
+    // return Article::with('user')->get()->mapWithKeys(function ($article) {
+    //     return [
+    //         $article->id => [
+    //             'title' => $article->title,
+    //             'created_at' => $article->created_at->format('m/d/Y'),
+    //             'user_name' => $article->user->name,
+    //             'user_email' => $article->user->email
+    //         ]
+    //     ];
+    // });
+
+    // $articles = Article::pluck('title');
+    // return $articles;
+
+    $articles = Article::all();
+    return $articles->keyBy('title');
 });
 
 
