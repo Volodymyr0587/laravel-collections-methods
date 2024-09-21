@@ -75,14 +75,60 @@ Route::get('/result', function () {
 
     // return $collection->contains(3);
 
-    $collection = collect([
-        'name' => 'Kevin de Bruyne',
-        'age' => 31,
-        'club' => 'Manchester City',
-    ]);
+    // $collection = collect([
+    //     'name' => 'Kevin de Bruyne',
+    //     'age' => 31,
+    //     'club' => 'Manchester City',
+    // ]);
 
-    // return $collection->except('age', 'club');
-    return $collection->only('name');
+    // // return $collection->except('age', 'club');
+    // return $collection->only('name');
+
+    // $players = collect([
+    //     [
+    //         'name' => 'Lionel Messi',
+    //         'position' => 'Forward'
+    //     ],
+    //     [
+    //         'name' => 'Kylian Mbappe',
+    //         'position' => 'Forward'
+    //     ],
+    //     [
+    //         'name' => 'Neymar Jr.',
+    //         'position' => 'Forward'
+    //     ],
+    // ]);
+
+    // $mapped = $players->map(function ($player) {
+    //     $player['team'] = 'PSG';
+    //     return $player;
+    // });
+
+    // return $mapped;
+
+    // $articles = Article::with('user')
+    //     ->get()
+    //     ->map(function($article) {
+    //         return [
+    //             'id' => $article->id,
+    //             'title' => $article->title,
+    //             'created_at' => $article->created_at->format('m/d/Y'),
+    //             'user_name' => $article->user->name,
+    //             'user_email' => $article->user->email
+    //         ];
+    //     });
+    // return $articles;
+
+    return Article::with('user')->get()->mapWithKeys(function ($article) {
+        return [
+            $article->id => [
+                'title' => $article->title,
+                'created_at' => $article->created_at->format('m/d/Y'),
+                'user_name' => $article->user->name,
+                'user_email' => $article->user->email
+            ]
+        ];
+    });
 });
 
 
