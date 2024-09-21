@@ -40,7 +40,18 @@ Route::get('/result', function () {
     //     ->get();
 
     // return Article::whereNull('excerpt')->count();
-    return Article::whereNotNull('excerpt')->count();
+    // return Article::whereNotNull('excerpt')->count();
+
+    // return Article::whereDate('created_at', '2024-09-20')->get();
+    // return Article::whereDay('created_at', 18)->get();
+    // return Article::whereMonth('created_at', 8)->get();
+    // return Article::whereYear('created_at', 2022)->get();
+    return Article::whereTime('created_at', '>=', '09:00:00')
+        ->whereTime('created_at', '<=', '17:00:00')
+        ->count();
+
+
+
 
 });
 
