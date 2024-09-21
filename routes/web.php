@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
@@ -38,4 +39,18 @@ Route::get('/result', function () {
     // ])->where('min_to_read', '>', 5)
     //     ->get();
 
+});
+
+
+Route::get('/users', function () {
+    $roles = [
+        'admin', 'super_admin',
+    ];
+
+    //% whereIn
+    // return User::whereIn('role', $roles)->count();
+    //% whereNotIn
+    return User::whereNotIn('role', $roles)
+        ->where('name', 'LIKE', "B%")
+        ->count();
 });
