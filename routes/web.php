@@ -39,6 +39,9 @@ Route::get('/result', function () {
     // ])->where('min_to_read', '>', 5)
     //     ->get();
 
+    // return Article::whereNull('excerpt')->count();
+    return Article::whereNotNull('excerpt')->count();
+
 });
 
 
