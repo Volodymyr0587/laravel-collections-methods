@@ -215,18 +215,39 @@ Route::get('/result', function () {
     // $chunks = $posts->split(5);
     // return $chunks;
 
-    //% sort and sortDesc
+    // //% sort and sortDesc
+    // $collection = collect([
+    //     3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5
+    // ]);
+
+    // //%sort
+    // // $sorted = $collection->sort();
+    // // return $sorted->values()->all();
+
+    // $sortedByDesc = $collection->sortDesc();
+    // return $sortedByDesc->values()->all();
+
     $collection = collect([
-        3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5
+        ['name' => 'Dary', 'age' => 27],
+        ['name' => 'John', 'age' => 30],
+        ['name' => 'Jane', 'age' => 25],
     ]);
 
-    //%sort
-    // $sorted = $collection->sort();
-    // return $sorted->values()->all();
+    //% sortBy
+    $sortedBy = $collection->sortBy('age');
+    // return $sortedBy->values()->all();
 
-    $sortedByDesc = $collection->sortDesc();
-    return $sortedByDesc->values()->all();
+    //% sortByDesc
+    $sortedByDesc = $collection->sortByDesc('age');
+    // return $sortedByDesc->values()->all();
 
+    //% sortKeys
+    $sorted = $collection->sortKeys();
+    // return $sorted;
+
+    //% sortKeyByDesc
+    $sorted = $collection->sortKeysDesc();
+    return $sorted->values()->all();
 
 });
 
