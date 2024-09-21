@@ -133,8 +133,24 @@ Route::get('/result', function () {
     // $articles = Article::pluck('title');
     // return $articles;
 
-    $articles = Article::all();
-    return $articles->keyBy('title');
+    // $articles = Article::all();
+    // return $articles->keyBy('title');
+
+    $collection = collect([
+        1, 2, 3, 4, '', 0, 'Volodymyr', null, false, []
+    ]);
+
+    $collection->push(6, 7, 8, 'laravel', [1, 2, 3]);
+
+    $collection->put('name', 'John Doe');
+
+    $collection->forget('name');
+
+    $removed = $collection->pop();
+
+    $shifted = $collection->shift();
+
+    return $shifted;
 });
 
 
